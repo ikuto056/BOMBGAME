@@ -1,4 +1,4 @@
-package com.example.bombgame;
+package com.forest.bombgame;
 
 import android.content.Context;
 
