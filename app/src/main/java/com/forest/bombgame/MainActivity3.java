@@ -8,19 +8,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity3 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main3);
 
-        final Button button1 = findViewById(R.id.firstButton);
-        button1.setOnClickListener(new View.OnClickListener() {
+        final Button button3 = findViewById(R.id.thirdButton);
+        button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                Intent intent = new Intent(MainActivity3.this, MainActivity4.class);
                 startActivity(intent);
-                Log.d("debug", "button1, Perform action on click");
+                Log.d("debug", "button3, Perform action on click");
             }
         });
     }
