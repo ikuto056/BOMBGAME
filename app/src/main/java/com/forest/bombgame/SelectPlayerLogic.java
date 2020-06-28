@@ -4,6 +4,7 @@ package com.forest.bombgame;
 import java.util.ArrayList;
 import java.util.Random;
 public class SelectPlayerLogic {
+    //各プレイヤーの選ばれる確率
     private static ArrayList<Integer>players=null;
     private static int sum;
     public SelectPlayerLogic(int playerNumber){
@@ -23,6 +24,7 @@ public class SelectPlayerLogic {
             randomNum-=players.get(i);
             if(randomNum<=0){
                 res=i+1;
+                //選ばれなかったプレイヤーの確率を上げる
                 for(int j=0;j<players.size();j++){
                     if(j==i)continue;
                     players.set(j,players.get(j)+1);
