@@ -8,13 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity4 extends AppCompatActivity {
     //TODO: 一つ前のアクティビティから値を受け取る処理を実装する
-    int player = 2; //プレイヤーの番号
-    int count = 3;  //爆弾を押す個数
+    int PLAYER = 2;         //プレイヤーの番号
+    int COUNT = 3;          //爆弾を押す個数
+    int BOMB_NUMBER = 15;   //初期の爆弾の数
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +28,8 @@ public class MainActivity4 extends AppCompatActivity {
     //NOTE: 指示テキストの更新処理
     private void setExplainText() {
         TextView explainText = findViewById(R.id.terminalViewExplainText);
-        String text = "Player" + String.valueOf(player) + "\n"
-                + "Press" + String.valueOf(count) + "buttons!";
+        String text = "Player" + String.valueOf(PLAYER) + "\n"
+                + "Press" + String.valueOf(COUNT) + "buttons!";
         explainText.setText(text);
     }
 
@@ -38,15 +38,16 @@ public class MainActivity4 extends AppCompatActivity {
         View.OnClickListener event = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FloatingActionButton bomb = (FloatingActionButton) view;
+                Button bomb = (Button) view;
                 Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 //TODO: hide関数だと制約が落ちるので、他の方法で実装する（色とアクションをOFFにする？）
                 bomb.setBackgroundColor(Color.argb(0, 0, 0, 0));
-                System.out.print(bomb.getBackgroundTintList());
                 bomb.setOnClickListener(null);
+                BOMB_NUMBER--;
             }
         };
+        
         findViewById(R.id.bomb0).setOnClickListener(event);
         findViewById(R.id.bomb1).setOnClickListener(event);
         findViewById(R.id.bomb2).setOnClickListener(event);
