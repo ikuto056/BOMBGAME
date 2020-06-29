@@ -7,12 +7,25 @@
     tools:context=".MainActivity4">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/terminalViewTopText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Terminal View!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="15dp"
+        android:text="Bomb Game!!"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/terminalViewExplainText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/terminalViewTopText" />
 </androidx.constraintlayout.widget.ConstraintLayout>
