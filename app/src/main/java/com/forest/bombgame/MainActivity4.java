@@ -21,7 +21,8 @@ public class MainActivity4 extends AppCompatActivity {
     //NOTE: 指示テキストの更新処理
     private void setExplainText() {
         TextView explainText = findViewById(R.id.terminalViewExplainText);
-        explainText.setText("Player" + String.valueOf(player) + "\n"
-                            + "Press" + String.valueOf(count) + "buttons!");
+        String text = "Player" + String.valueOf(player) + "\n"
+                + "Press" + String.valueOf(count) + "buttons!";
+        explainText.setText(text);
     }
 }
