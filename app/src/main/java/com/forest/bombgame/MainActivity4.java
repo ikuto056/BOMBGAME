@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import java.util.Random;
+
 public class MainActivity4 extends AppCompatActivity {
     //TODO: 一つ前のアクティビティから値を受け取る処理を実装する
     int PLAYER = 2;         //プレイヤーの番号
@@ -25,7 +27,7 @@ public class MainActivity4 extends AppCompatActivity {
         setBombEvent();
     }
 
-    //NOTE: 指示テキストの更新処理
+    // NOTE: 指示テキストの更新処理
     private void setExplainText() {
         TextView explainText = findViewById(R.id.terminalViewExplainText);
         String text = "Player" + String.valueOf(PLAYER) + "\n"
@@ -33,21 +35,27 @@ public class MainActivity4 extends AppCompatActivity {
         explainText.setText(text);
     }
 
-    //NOTE: 爆弾ボタンのイベント追加処理
+    // NOTE: 爆弾ボタンのイベント追加処理
     private void setBombEvent() {
         View.OnClickListener event = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Button bomb = (Button) view;
-                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                //TODO: hide関数だと制約が落ちるので、他の方法で実装する（色とアクションをOFFにする？）
-                bomb.setBackgroundColor(Color.argb(0, 0, 0, 0));
+//                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                bomb.setVisibility(View.INVISIBLE);
                 bomb.setOnClickListener(null);
                 BOMB_NUMBER--;
+
+                if (isExplode()) {
+                    Snackbar.make(view, "BOOOOOOM!!!", Snackbar.LENGTH_LONG)
+                            .setAction("BOOOOOOM!!!", null).show();
+                } else {
+                    //
+                }
             }
         };
-        
+
         findViewById(R.id.bomb0).setOnClickListener(event);
         findViewById(R.id.bomb1).setOnClickListener(event);
         findViewById(R.id.bomb2).setOnClickListener(event);
@@ -63,5 +71,16 @@ public class MainActivity4 extends AppCompatActivity {
         findViewById(R.id.bomb12).setOnClickListener(event);
         findViewById(R.id.bomb13).setOnClickListener(event);
         findViewById(R.id.bomb14).setOnClickListener(event);
+    }
+
+    // NOTE: 爆発判定の関数
+    private boolean isExplode() {
+        Random random = new Random();
+        int randomValue = random.nextInt(BOMB_NUMBER);  //0以上BOMB_NUMBER未満の整数
+        if (randomValue == BOMB_NUMBER - 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
